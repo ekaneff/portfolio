@@ -6,6 +6,8 @@
 * [Set up the VPS](#one)
 * [Installing Ansible](#two)
 * [Running the Ansible Playbook](#three)
+* [Setting up CodeShip](#four)
+* [Using Gulp for Git](#five)
 * [Resources](#resources)
 
 <a name="one"></a>
@@ -82,6 +84,7 @@ ssh root@[your ip]
 
 Then navigate to the `/var/www/html` folder. Run an `ls` command and if you see the name of your project folder, everything went smoothly. 
 
+<a name="four"></a>
 ## Step Four: Setting up CodeShip
 
 Since we are implementing a centralized workflow using Git, we need a way to run tests and push our content to our servers after certain events take place on our Github repository. We can do this through a program called [CodeShip](http://codeship.com/). We can tell CodeShip to watch our repository on certain branches for activity and from there it will fire off any pre-setup scripts or tests that we specify, and on success we can have it actually deploy to our server. 
@@ -117,5 +120,26 @@ Adjust the specifications as needed. The path on the server should match the pat
 
 Select 'Create Deployment' after that line is complete. If you would like to go ahead and set up the second deployment pipeline now, you can do so by selecting the 'Add new deployment pipeline' tab and repeating the same steps as previously outlined, but changing the IP used in the `rsync` line to that of the other server. 
 
-Once that is finished, you are ready to begin pushing files to your repository. That process will be outlined in the [README.md](README.md) of this repository. 
+<a name="five"></a>
+## Step Five: Using Gulp for Git
 
+To make your workflow just a little bit easier, included in the repository is a `gulpfile` that can be used to make some initial git setup and git commands go by a little quicker. 
+
+Since Gulp is a Node package, we need to install it using `npm` into our project. The `package.json` with the needed dependancies is already in the repo, to install Gulp and the other necessary packages, you can simply run: 
+
+```shell
+npm install
+```
+
+Once that finishes, if you are still located on your master branch, you can run the command `gulp` in your terminal and the Gulp tasks will create a release and development branch for you, preparing you for your feature branch workflow. 
+
+Then, throughout your development process, instead of running the commands `git add` and `git commit`, you can simply run: 
+
+```shell
+gulp add --m [you commit message]
+```
+> After you run this command, run `git status` to double check that things were committed correctly. If it errors out and you still see the files as staged, try running the `gulp add` command again. 
+
+This is meant to help take away some of the more repetitive tasks needed when doing a proper git workflow, and leaves less room for human error. 
+
+Once that is finished, you are ready to begin pushing files to your repository. That process will be outlined in the [README.md](README.md) of this repository. 
