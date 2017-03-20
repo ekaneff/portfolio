@@ -1,8 +1,9 @@
 ---
-  - hosts: staging:production
+  - hosts: staging:production:test
     become: true
     user: root
     roles: 
+      - portfolio_user
       - nginx
 
   - hosts: staging
@@ -16,3 +17,9 @@
     user: root
     roles: 
       - production
+
+  - hosts: test
+    become: true
+    user: root
+    roles:
+      - test

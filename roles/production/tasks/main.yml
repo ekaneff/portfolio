@@ -11,3 +11,10 @@
   file: src=/etc/nginx/sites-available/{{ project }} dest=/etc/nginx/sites-enabled/{{ project }} state=link
   notify: 
     - Reload Nginx
+
+- name: Create project folder in /var/www/html
+  file: 
+    path: /var/www/html/{{ project }}
+    state: directory
+    group: "{{group}}"
+    mode: "u=rwx,g=rwx,o=rx"

@@ -6,9 +6,4 @@
   apt: pkg=nginx state=latest update_cache=true
   notify:
     - Start Nginx
-    
-- name: Create Folder in /var/www/html
-  script: setup.sh
-
-# - name: Create Bare Repo
-#   script: repos.sh
+  
