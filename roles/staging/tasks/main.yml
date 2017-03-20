@@ -16,5 +16,6 @@
   file: 
     path: /var/www/html/{{ project }}
     state: directory
+    owner: root
     group: "{{group}}"
-    mode: "u=rwx,g=rwx,o="
+    mode: "u=rwx,g=rwx,o=rx"
