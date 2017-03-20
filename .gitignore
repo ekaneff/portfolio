@@ -1,1 +1,3 @@
 node_modules
+roles/portfolio_user/vars/main.yml
+roles/portfolio_user/files/authorized_keys

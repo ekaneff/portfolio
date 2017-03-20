@@ -335,76 +335,6 @@ h1::before, h1::after {
 	margin-bottom: 40px;
 }
 
-/*form {
-	width: 600px;
-	margin: 0 auto;
-	padding: 10px;
-}*/
-
-/*form::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-form p::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-label {
-	float: left;
-}
-
-input {
-	border: 2px solid #ccc;
-	margin-bottom: 10px;
-	float: left; 
-	border-radius: 5px;
-}
-
-#name {
-	margin-left: 18px;
-}
-
-#email {
-	margin-left: 50px;
-}
-
-textarea {
-	height: 200px;
-	width: 400px;
-	border: 2px solid #ccc;
-	border-radius: 5px;
-	float: left;
-	margin-left: 25px;
-}
-
-#contact button {
-	background: #3EBB8E;
-	border: none;
-	width: 100px;
-	padding: 10px 0 10px 0;
-	border-radius: 5px;
-	box-shadow: 0px 5px #329574;
-	color: white;
-	font-size: 1.6em;
-	margin-top: 20px;
-	float: left;
-	margin-left: 390px;
-}
-
-#contact button:active {
-	background: #329574;
-	box-shadow: none;
-
-}
-
-#contact button:focus {
-	outline: none
-}*/
-
 #contact span {
 	color: #329574;
 	font-size: 6em;
@@ -422,31 +352,9 @@ footer {
 	padding: 40px;
 }
 
-footer ul {
-	width: 200px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-footer ul::after {
-	content:'';
-	display: block;
-	clear: both;
-}
-
-footer li {
-	float: left;
-	padding: 20px;
-}
-
-footer span {
-	color: #329574;
-}
-
 .text {
 	display: none;
 }
-
 
 
 

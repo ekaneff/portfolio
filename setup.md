@@ -46,9 +46,19 @@ Also be sure to change the name of the `project` variable located in `vars` in b
 
 Finally, you will need to go into `setup.sh` and change the name of the directory that will be created to match the name of the project you set in the `vars` files. 
 
-With the set up I have laid out in these scripts, ansible will be running three playbooks. You can view these in the main `.yml` file located in the root of the directory (for this project, it is titled `portfolio.yml`). 
+#### Non-Root Users
 
-The first playbook will install Nginx onto both servers and run the set up script to create the project folder in `/var/www/html` for Nginx to point at when serving. The second and third playbook will run the scripts needed to place the server config files in the `sites-enabled` folder on the servers individually. This will allow for us to have separate environments for the content that is live verses the content we are actively updating and making changes to. 
+To add a non-root user you simply duplicate the folder titled `nonroot` and adjust the variables accordingly. 
+
+Begin by changing the name of the folder itself to that of the user you are going to be creating. 
+
+Next, navigate to the `var` folder in that user folder, duplicate the `main.yml.sample` file, remove the `.sample` extension and fill in the information you need for your user. The password should be encrypted following [these instructions.](http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module) Use the output The name of your user should match the name you gave the folder. The group should be specific to the project, so having it match the name you gave the `project` variables in the other files would be wise.  
+
+Then, in the `files` folder, duplicate the `authorized_keys.sample` file and remove the `.sample` extension. Paste in your new user's public ssh key. 
+
+> Both the `main.yml` and `authorized_keys` files will be git ignored, so it is important that you do not make changes in the `.sample` version of these files, but rather make a duplicate and place your information there. 
+
+Finally, on the root directory of the project is a `.gitignore` file. Within this, make sure to place a path to both the `main.yml` and the `authorized_keys` files respectively. 
 
 With those files in place, we can now execute the playbook commands.
 
@@ -77,8 +87,9 @@ This will begin executing the roles and installing the necessary dependancies to
 Once that completes, your server environments are ready to accept files. If you would like to check to see that everything ran smoothly, you can `ssh` into your server by running:
 
 ```shell
-ssh root@[your ip]
+ssh [user]@[your ip]
 ```
+> Since you created non root users, you should be able to ssh as either root or your non-root user if you created one for yourself with your public ssh key. 
 
 Then navigate to the `/var/www/html` folder. Run an `ls` command and if you see the name of your project folder, everything went smoothly. 
 
@@ -95,7 +106,7 @@ Next, copy the clone URL from your project repository and paste it into the inte
 
 Since this tutorial is geared more towards smaller scale projects, selecting the Basic project type will be more than suitable for our needs. 
 
-The next screen is where we can choose to implement any setup commands or test pipelines. Since we are not using one of the tech stacks outlined in their selections, writing your own custom scripts is fine. For this project, we don't need to run anything for setup and there is not a huge need for test commands since the page is just static, so we can just hit the `Save and go to dashboard` button at the bottom of the screen. 
+The next screen is where we can choose to implement any setup commands or test pipelines. Since we are not using one of the tech stacks outlined in their selections, writing your own custom scripts is fine. For this project, we don't need to run anything for setup and there is not a huge need for test commands right now, so we can just hit the `Save and go to dashboard` button at the bottom of the screen. 
 
 Now CodeShip will tell you that you can trigger your first build by making a push to your repository. You can do this if you want to make sure that the connection is there, but we are going to skip to adding the deployment script. 
 

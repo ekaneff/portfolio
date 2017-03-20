@@ -12,9 +12,10 @@
   notify: 
     - Reload Nginx
 
+# removes write access from anyone that isnt owner or group
 - name: Create project folder in /var/www/html
   file: 
     path: /var/www/html/{{ project }}
     state: directory
     group: "{{group}}"
-    mode: "u=rwx,g=rwx,o="
+    mode: "u=rwx,g=rwx,o=rx"
