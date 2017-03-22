@@ -25,6 +25,7 @@ h1 {
 h3 {
 	font-size: 3.5em;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 h3, h4, h5, h6 {
@@ -38,6 +39,11 @@ section {
 
 a {
 	color: #3EBB8E;
+	transition: .3s;
+}
+
+a:hover {
+	color: #329574;
 }
 
 p {
@@ -137,8 +143,13 @@ nav a:hover:before, nav a:hover:after
   color: #fff;
   text-decoration: none;
 }
+
+.fixed li {
+	transition: .5s;
+}
+
 .fixed li:hover {
-  background: rgba(62, 187, 143, .95);
+  background: rgba(62, 187, 143, .2);
 }
 
 @media screen and (max-width: 500px) {
@@ -213,18 +224,6 @@ h1::before, h1::after {
 	bottom: -8px;
 }
 
-/*#about::before {
-	content:"";
-	display: block;
-	width: 0;
-	height: 0;
-
-	border-right: 50px solid black;
-	border-bottom: 50px solid black;
-	position: absolute;
-	bottom: 100px;
-}*/
-
 /*----------ABOUT SECTION------------*/
 
 #about::before {
@@ -245,8 +244,9 @@ h1::before, h1::after {
 }
 
 #about p {
-	width: 500px;
+	width: 600px;
 	margin: 0 auto;
+	text-align: left;
 }
 
 #about::after {
@@ -283,17 +283,55 @@ h1::before, h1::after {
 }
 
 #work h3 {
-	margin-top: 100px;
-	margin-bottom: 50px;
+	width: 600px;
+	margin: 0 auto;
+	margin-bottom: 20px;
 }
 
-#work p {
-	width: 60%;
+#work .design {
+	text-align: left;
+	margin-bottom: 0;
+}
+
+#work .dev {
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+#work h4 {
+	width: 600px;
 	margin: 0 auto;
-	padding: 10px;
+	text-align: left;
+}
+
+.desc {
+	width: 604px;
+	margin: 0 auto;
+	text-align: justify;
+}
+
+.desc em {
+	font-weight: bold;
+}
+
+.first {
 	margin-bottom: 100px;
 }
 
+.btn {
+	margin: 0 auto;
+	margin-bottom: 100px;
+	width: 600px;
+	text-align: right;
+}
+
+.headers h3:first-of-type {
+	text-align: left;
+}
+
+.headers h3 {
+	display: inline
+}
 
 #work::after {
 	content: "";
@@ -307,10 +345,21 @@ h1::before, h1::after {
 }
 
 #work img {
-	padding: 5px;
+	padding: 5px 50px;
 	border: 2px solid #ccc;
 	border-radius: 5px;
 	margin-bottom: 20px;
+}
+
+.button {
+	display: inline-block;
+	font-family: 'Quattrocento Sans', sans-serif;
+	transition: .3s;
+	text-align: center;
+}
+
+.button:hover {
+	color: #329574;
 }
 
 
@@ -339,6 +388,7 @@ h1::before, h1::after {
 	color: #329574;
 	font-size: 6em;
 	margin: 30px;
+	transition: .3s;
 }
 
 #contact span:hover {
